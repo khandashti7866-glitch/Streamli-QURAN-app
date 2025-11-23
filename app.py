@@ -1,9 +1,9 @@
 # app.py
 """
-Luxury Black & Gold Streamlit Qur'an Reader with Auto-Download
+Luxury Black & Gold Streamlit Qur'an Reader with Background Image
 Features:
  - Auto-download Qur'an JSON if missing
- - Elegant black background with gold text
+ - Elegant black background with gold text and decorative background image
  - Glassmorphism panels
  - Beautiful Arabic font (Amiri)
  - Single Ayah / Full Surah view
@@ -20,14 +20,18 @@ import requests
 st.set_page_config(page_title="Qur'an Reader", layout="wide")
 
 # -------------------------
-# CSS Styling - Black & Gold Theme
+# CSS Styling - Black & Gold Theme with Background Image
 # -------------------------
 st.markdown(
     """
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Amiri&display=swap');
         body {
-            background-color: #000000;
+            background-image: url('https://images.unsplash.com/photo-1604566067273-0fbd8ad6a4c7');
+            background-size: cover;
+            background-attachment: fixed;
+            background-repeat: no-repeat;
+            background-position: center;
             color: #FFD700;
             font-family: 'Amiri', serif;
         }
@@ -36,8 +40,8 @@ st.markdown(
             padding: 25px;
             border-radius: 18px;
             box-shadow: 0 4px 25px rgba(0,0,0,0.8);
-            backdrop-filter: blur(8px);
-            -webkit-backdrop-filter: blur(8px);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
             border: 1px solid #FFD700;
         }
         .arabic-text {
