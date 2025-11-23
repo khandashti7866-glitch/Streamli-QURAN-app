@@ -92,19 +92,6 @@ st.markdown("""
     border: 2px solid #d4af37;
     box-shadow: 0 0 12px rgba(255, 215, 0, 0.7);
 }
-.corner-kaaba {
-    position: absolute;
-    width: 45px;
-    height: 45px;
-    background: linear-gradient(145deg, #000000, #1a1a1a);
-    border: 3px solid #d4af37;
-    border-radius: 6px;
-    box-shadow: 0 0 12px rgba(212, 175, 55, 0.8);
-}
-#top-left-kaaba { top: 12px; left: 12px; }
-#top-right-kaaba { top: 12px; right: 12px; }
-#bottom-left-kaaba { bottom: 12px; left: 12px; }
-#bottom-right-kaaba { bottom: 12px; right: 12px; }
 </style>
 """, unsafe_allow_html=True)
 
@@ -143,13 +130,7 @@ left, right = st.columns([1, 2])
 
 # LEFT SIDE — Controls
 with left:
-    st.markdown("""
-<div id='top-left-kaaba' class='corner-kaaba'></div>
-<div id='top-right-kaaba' class='corner-kaaba'></div>
-<div id='bottom-left-kaaba' class='corner-kaaba'></div>
-<div id='bottom-right-kaaba' class='corner-kaaba'></div>
-<div class='glass-box'>
-""", unsafe_allow_html=True), unsafe_allow_html=True)
+    st.markdown("<div class='glass-box'>", unsafe_allow_html=True)
     st.header("👑 Royal Qur'an Menu")
 
     surah_list = [f"{s['number']:03d} — {s['englishName']} ({len(s['ayahs'])} Ayat)" for s in SURAHS]
