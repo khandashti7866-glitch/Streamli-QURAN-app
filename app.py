@@ -1,11 +1,11 @@
 # app.py
 """
-Streamlit Qur'an Reader with Auto-Download, Beautiful Background & Typography.
+Luxury Black & Gold Streamlit Qur'an Reader with Auto-Download
 Features:
  - Auto-download Qur'an JSON if missing
- - Elegant full-screen background (CSS)
+ - Elegant black background with gold text
  - Glassmorphism panels
- - Beautiful Arabic font (Amiri/MeQuran fallback)
+ - Beautiful Arabic font (Amiri)
  - Single Ayah / Full Surah view
 """
 from pathlib import Path
@@ -20,39 +20,47 @@ import requests
 st.set_page_config(page_title="Qur'an Reader", layout="wide")
 
 # -------------------------
-# CSS Styling
+# CSS Styling - Black & Gold Theme
 # -------------------------
 st.markdown(
     """
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Amiri&display=swap');
         body {
-            background: url('https://images.unsplash.com/photo-1526401485004-2fda9f6d2f4a') no-repeat center center fixed;
-            background-size: cover;
+            background-color: #000000;
+            color: #FFD700;
             font-family: 'Amiri', serif;
         }
         .glass-box {
-            background: rgba(255, 255, 255, 0.25);
+            background: rgba(0, 0, 0, 0.5);
             padding: 25px;
             border-radius: 18px;
-            box-shadow: 0 4px 25px rgba(0,0,0,0.25);
+            box-shadow: 0 4px 25px rgba(0,0,0,0.8);
             backdrop-filter: blur(8px);
             -webkit-backdrop-filter: blur(8px);
+            border: 1px solid #FFD700;
         }
         .arabic-text {
             font-family: 'Amiri', serif;
-            font-size: 30px;
-            line-height: 1.9;
+            font-size: 32px;
+            line-height: 2.0;
             direction: rtl;
             text-align: right;
+            color: #FFD700;
         }
         .ayah-number {
-            background: rgba(0,0,0,0.4);
-            color: white;
+            background: #FFD700;
+            color: #000000;
             padding: 4px 10px;
             border-radius: 10px;
             font-size: 14px;
             margin-left: 6px;
+        }
+        .stButton>button {
+            background-color: #FFD700;
+            color: #000000;
+            border-radius: 12px;
+            padding: 6px 14px;
         }
     </style>
     """,
