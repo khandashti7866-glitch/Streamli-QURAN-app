@@ -1,6 +1,6 @@
 # app.py
 """
-Luxury Black & Gold Streamlit Qur'an Reader with Background Image
+Luxury Black & Gold Streamlit Qur'an Reader with Decorative Background Image
 Features:
  - Auto-download Qur'an JSON if missing
  - Elegant black background with gold text and decorative background image
@@ -22,54 +22,51 @@ st.set_page_config(page_title="Qur'an Reader", layout="wide")
 # -------------------------
 # CSS Styling - Black & Gold Theme with Background Image
 # -------------------------
-st.markdown(
-    """
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Amiri&display=swap');
-        body {
-            background-image: url('https://images.unsplash.com/photo-1604566067273-0fbd8ad6a4c7');
-            background-size: cover;
-            background-attachment: fixed;
-            background-repeat: no-repeat;
-            background-position: center;
-            color: #FFD700;
-            font-family: 'Amiri', serif;
-        }
-        .glass-box {
-            background: rgba(0, 0, 0, 0.5);
-            padding: 25px;
-            border-radius: 18px;
-            box-shadow: 0 4px 25px rgba(0,0,0,0.8);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            border: 1px solid #FFD700;
-        }
-        .arabic-text {
-            font-family: 'Amiri', serif;
-            font-size: 32px;
-            line-height: 2.0;
-            direction: rtl;
-            text-align: right;
-            color: #FFD700;
-        }
-        .ayah-number {
-            background: #FFD700;
-            color: #000000;
-            padding: 4px 10px;
-            border-radius: 10px;
-            font-size: 14px;
-            margin-left: 6px;
-        }
-        .stButton>button {
-            background-color: #FFD700;
-            color: #000000;
-            border-radius: 12px;
-            padding: 6px 14px;
-        }
-    </style>
-    """,
-    unsafe_allow_html=True,
-)
+st.markdown("""
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Amiri&display=swap');
+.stApp {
+    background-image: url('https://images.unsplash.com/photo-1604566067273-0fbd8ad6a4c7');
+    background-size: cover;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-position: center;
+    color: #FFD700;
+    font-family: 'Amiri', serif;
+}
+.glass-box {
+    background: rgba(0, 0, 0, 0.5);
+    padding: 25px;
+    border-radius: 18px;
+    box-shadow: 0 4px 25px rgba(0,0,0,0.8);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid #FFD700;
+}
+.arabic-text {
+    font-family: 'Amiri', serif;
+    font-size: 32px;
+    line-height: 2.0;
+    direction: rtl;
+    text-align: right;
+    color: #FFD700;
+}
+.ayah-number {
+    background: #FFD700;
+    color: #000000;
+    padding: 4px 10px;
+    border-radius: 10px;
+    font-size: 14px;
+    margin-left: 6px;
+}
+.stButton>button {
+    background-color: #FFD700;
+    color: #000000;
+    border-radius: 12px;
+    padding: 6px 14px;
+}
+</style>
+""", unsafe_allow_html=True)
 
 # -------------------------
 # Auto-download Qur'an JSON if missing
