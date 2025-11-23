@@ -1,14 +1,12 @@
 # app.py
 """
-Luxury Right-Sided Streamlit Qur'an Reader with Decorative Background Image
+Luxury Black & Gold Streamlit Qur'an Reader with Decorative Background Image
 Features:
  - Auto-download Qur'an JSON if missing
- - Full-screen decorative background image
- - Right-sided luxury panel with glassmorphism
- - Gold and black theme
- - Elegant Arabic font (Amiri)
+ - Elegant black background with gold text and decorative background image
+ - Glassmorphism panels
+ - Beautiful Arabic font (Amiri)
  - Single Ayah / Full Surah view
- - Modern luxurious buttons and layout
 """
 from pathlib import Path
 import json
@@ -22,7 +20,7 @@ import requests
 st.set_page_config(page_title="Qur'an Reader", layout="wide")
 
 # -------------------------
-# CSS Styling - Luxury Theme
+# CSS Styling - Black & Gold Theme with Background Image
 # -------------------------
 st.markdown("""
 <style>
@@ -37,51 +35,35 @@ st.markdown("""
     font-family: 'Amiri', serif;
 }
 .glass-box {
-    background: rgba(0, 0, 0, 0.6);
-    padding: 30px;
-    border-radius: 25px;
-    box-shadow: 0 8px 35px rgba(0,0,0,0.9);
-    backdrop-filter: blur(15px);
-    -webkit-backdrop-filter: blur(15px);
+    background: rgba(0, 0, 0, 0.5);
+    padding: 25px;
+    border-radius: 18px;
+    box-shadow: 0 4px 25px rgba(0,0,0,0.8);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
     border: 1px solid #FFD700;
-    transition: all 0.3s ease-in-out;
-}
-.glass-box:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 12px 45px rgba(0,0,0,1);
 }
 .arabic-text {
     font-family: 'Amiri', serif;
-    font-size: 36px;
-    line-height: 2.2;
+    font-size: 32px;
+    line-height: 2.0;
     direction: rtl;
     text-align: right;
     color: #FFD700;
-    text-shadow: 0 0 8px rgba(255,215,0,0.8);
 }
 .ayah-number {
     background: #FFD700;
     color: #000000;
-    padding: 6px 12px;
-    border-radius: 12px;
-    font-size: 16px;
-    margin-left: 8px;
-    font-weight: bold;
-    box-shadow: 0 0 5px rgba(255,215,0,0.9);
+    padding: 4px 10px;
+    border-radius: 10px;
+    font-size: 14px;
+    margin-left: 6px;
 }
 .stButton>button {
     background-color: #FFD700;
     color: #000000;
-    border-radius: 16px;
-    padding: 8px 18px;
-    font-weight: bold;
-    font-size: 16px;
-    box-shadow: 0 0 12px rgba(255,215,0,0.9);
-    transition: all 0.3s ease-in-out;
-}
-.stButton>button:hover {
-    transform: scale(1.05);
-    box-shadow: 0 0 20px rgba(255,215,0,1);
+    border-radius: 12px;
+    padding: 6px 14px;
 }
 </style>
 """, unsafe_allow_html=True)
@@ -116,37 +98,35 @@ def load_quran():
 SURAHS = load_quran()
 
 # -------------------------
-# UI Layout with Right-Sided Panel
+# UI Layout
 # -------------------------
 left, right = st.columns([1, 2])
 
-# Left empty for background effect or decoration
 with left:
-    st.write("")
-
-# Right luxury panel
-with right:
     st.markdown("<div class='glass-box'>", unsafe_allow_html=True)
     st.header("📖 قرآن مجید")
-
     surah_info = [f"{s['number']:03d} — {s.get('englishName','')} ({len(s['ayahs'])} Ayat)" for s in SURAHS]
     surah_sel = st.selectbox("Select Surah / سورہ منتخب کریں", surah_info)
     surah_number = int(surah_sel.split('—')[0])
-
     choice = st.radio("View", ["Full Surah", "Single Ayah"])
     if choice == "Single Ayah":
         ayah_num = st.number_input("Ayah number", min_value=1, max_value=len(SURAHS[surah_number-1]['ayahs']), value=1)
     else:
         ayah_num = None
+    st.markdown("</div>", unsafe_allow_html=True)
 
+with right:
+    st.markdown("<div class='glass-box'>", unsafe_allow_html=True)
+    surah = SURAHS[surah_number-1]
+    st.subheader(f"Surah {surah['number']}: {surah['englishName']}")
     st.write("---")
 
     if ayah_num:
-        ay = SURAHS[surah_number-1]['ayahs'][ayah_num-1]
+        ay = surah['ayahs'][ayah_num - 1]
         st.markdown(f"<span class='ayah-number'>{ayah_num}</span>", unsafe_allow_html=True)
         st.markdown(f"<div class='arabic-text'>{ay['text']}</div>", unsafe_allow_html=True)
     else:
-        for ay in SURAHS[surah_number-1]['ayahs']:
+        for ay in surah['ayahs']:
             st.markdown(f"<span class='ayah-number'>{ay['numberInSurah']}</span>", unsafe_allow_html=True)
             st.markdown(f"<div class='arabic-text'>{ay['text']}</div>", unsafe_allow_html=True)
 
