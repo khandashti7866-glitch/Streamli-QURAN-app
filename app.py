@@ -134,16 +134,3 @@ with right:
             )
 
     st.markdown("</div>", unsafe_allow_html=True)
-
-# -------------------------
-# requirements.txt (Separate File)
-# -------------------------
-# streamlit
-# requests
-# -------------------------
- (also included separately below)
-# -------------------------
-# streamlit
-# altair (optional)
-# requests
-# -------------------------
